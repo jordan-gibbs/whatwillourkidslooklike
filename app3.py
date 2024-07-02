@@ -63,7 +63,7 @@ def prompt_gen(person1, person2):
 
 # Function to generate the image
 def generate_image(prompt, age, gender, image1, image2, merge_strength, merge_noise):
-    rep_token = st.secrets('REPLICATE_API_TOKEN')
+    rep_token = st.secrets['REPLICATE_API_TOKEN']
     rep_client = replicate.Client(api_token=rep_token)
 
     output = rep_client.run(
@@ -139,7 +139,7 @@ if st.button("Go!"):
             encoded1 = encode_image(image1.read())
             encoded2 = encode_image(image2.read())
 
-            api_key = st.secrets('OPENAI_API_KEY')
+            api_key = st.secrets['OPENAI_API_KEY']
             person1 = get_image_description(encoded_image=encoded1, api_key=api_key)
             person1 = person1['choices'][0]['message']['content']
 
